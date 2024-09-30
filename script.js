@@ -2,8 +2,7 @@ console.log("LET'S START SBA 316! Veronika Teplova's WEB APPLICATION")
 
 //items
 const cardImages = [
-    '🍭', '🍬', '🍫', '🍩', '🍪',
-    '🍰', '🍦', '🍧', '🍿', '🍎'
+    '🍭', '🍬', '🍫', '🍩', '🍪', '🍰', '🍦', '🍧', '🍿', '🍎'
 ];
 console.log(cardImages);
 
@@ -20,7 +19,19 @@ let lockBoard = false;
 let matchedPairs = 0;
 
 
+function createCard(value) {
+    const card = document.createElement('div');
+    card.classList.add('card');
+    card.innerHTML = 
+       ` <div class="front">${value}</div>
+        <div class="back">?</div>  `;
 
+// click
+card.addEventListener('click', () => flipCard(card));
+cardGrid.appendChild(card);
+
+
+}
 
 
 

@@ -19,6 +19,7 @@ h1 {
     justify-content: center;
     align-items: center;
     margin-top: 30px;
+
 }
 
 #card-grid {
@@ -26,4 +27,25 @@ h1 {
     grid-template-columns: repeat(5, 120px); /* Columns */
     grid-gap: 10px;
     margin: 0 auto;
+
+
+}
+
+/* ------- CARD styling-------- */
+.card {
+    width: 120px;
+    height: 150px;
+    background-color: #ffd1dc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.4s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.card.flipped {
+transform:rotateY(180deg);
 }
