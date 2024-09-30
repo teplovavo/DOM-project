@@ -18,7 +18,7 @@ let secondCard = null;
 let lockBoard = false;
 let matchedPairs = 0;
 
-
+///////////////////////////////////////create cards in DOM/////////////
 function createCard(value) {
     const card = document.createElement('div');
     card.classList.add('card');
@@ -34,9 +34,27 @@ cardGrid.appendChild(card);
 }
 
 
+/////////// card rotating function ////////////
 
+function flipCard(card) {
+    if (lockboard) return; //block until check
+    if (card === firstCard) return; //cant return the same card
 
+    card.classList.add('flipped');
 
+    if (!firstCard) {
+        firstCard = card;
+        return;
+    }
+    secondCard = card;
+    checkForMatch();
+
+}
+
+// check if match
+function checkForMatch() {
+    const isMatch
+}
 
 
 
