@@ -67,11 +67,20 @@ function disableCards() {
 
     //if all pairs found
     if (matchedPairs === cardSet.length / 2) {
-        setTimeout(() => alert("Cangratulations! You win!"), 500);
+        setTimeout(() => alert("Cangratulations! You did it!!!"), 500);
     }
 }
 
 
+//rotate if not match
+function unflipCards() {
+    lockBoard = true;
+    setTimeout(() => {
+        firstCard.classlist.remove('flipped');
+        secondCard.classList.remove('flipped');
+        resetBoard();
+    }, 1000);
+}
 
 
 
