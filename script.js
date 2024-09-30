@@ -23,8 +23,8 @@ function createCard(value) {
     const card = document.createElement('div');
     card.classList.add('card');
     card.innerHTML = 
-       ` <div class="front">${value}</div>
-        <div class="back">?</div>  `;
+       ` <div class="back">${value}</div>
+        <div class="front">?</div>  `;
 
     // click
     card.addEventListener('click', () => flipCard(card));
