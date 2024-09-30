@@ -1,2 +1,2 @@
-console.log("Lets START SBA 316!")
+console.log("LET'S START SBA 316! Veronika Teplova's WEB APPLICATION")
 

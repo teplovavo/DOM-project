@@ -1,0 +1,14 @@
+/* Basic styling*/
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #ffecf0;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    color: #ff66b2;
+    font-size: 2.5em;
+    margin: 20px 0;
+}
