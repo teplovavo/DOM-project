@@ -53,9 +53,23 @@ function flipCard(card) {
 
 // check if match
 function checkForMatch() {
-    const isMatch
+    const isMatch = firstCard.innerHTML === secondCard.innerHTML;
+    isMatch ? disableCards() : unflipCards();
+
 }
 
+//disable cards if match
+function disableCards() {
+    firstCard.removeEventListener('click', flipCard);
+    secondCard.removeEventListener('click', flipCard);
+    resetBoard();
+    matchedPairs++;
+
+    //if all pairs found
+    if (matchedPairs === cardSet.length / 2) {
+        setTimeout(() => alert("Cangratulations! You win!"), 500);
+    }
+}
 
 
 
