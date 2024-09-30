@@ -1,4 +1,4 @@
-console.log("LET'S START SBA 316! Veronika Teplova's WEB APPLICATION")
+console.log("LET'S START SBA 316! Veronika Teplova's WEB APPLICATION");
 
 //items
 const cardImages = [
@@ -26,18 +26,14 @@ function createCard(value) {
        ` <div class="front">${value}</div>
         <div class="back">?</div>  `;
 
-// click
-card.addEventListener('click', () => flipCard(card));
-cardGrid.appendChild(card);
-
-
+    // click
+    card.addEventListener('click', () => flipCard(card));
+    cardGrid.appendChild(card);
 }
 
-
 /////////// card rotating function ////////////
-
 function flipCard(card) {
-    if (lockboard) return; //block until check
+    if (lockBoard) return; //block until check
     if (card === firstCard) return; //cant return the same card
 
     card.classList.add('flipped');
@@ -48,14 +44,12 @@ function flipCard(card) {
     }
     secondCard = card;
     checkForMatch();
-
 }
 
 // check if match
 function checkForMatch() {
     const isMatch = firstCard.innerHTML === secondCard.innerHTML;
     isMatch ? disableCards() : unflipCards();
-
 }
 
 //disable cards if match
@@ -71,12 +65,11 @@ function disableCards() {
     }
 }
 
-
 //rotate if not match
 function unflipCards() {
     lockBoard = true;
     setTimeout(() => {
-        firstCard.classlist.remove('flipped');
+        firstCard.classList.remove('flipped');
         secondCard.classList.remove('flipped');
         resetBoard();
     }, 1000);
@@ -87,4 +80,5 @@ function resetBoard() {
     [firstCard, secondCard, lockBoard] = [null, null, false];
 }
 
-
+//cards
+cardSet.forEach(image => createCard(image));
