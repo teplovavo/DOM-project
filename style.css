@@ -23,7 +23,7 @@ h1 {
 
 #card-grid {
     display: grid;
-    grid-template-columns: repeat(5, 120px); /* Изменяй количество столбцов под свой дизайн */
+    grid-template-columns: repeat(5, 120px); /* Columns */
     grid-gap: 10px;
     margin: 0 auto;
 }
