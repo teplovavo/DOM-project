@@ -85,3 +85,29 @@ function resetBoard() {
 
 //cards
 cardSet.forEach(image => createCard(image));
+
+
+/////////////////////////BUTTON////////////////////////////////
+
+const resetButton = document.getElementById('reset-button');
+
+resetButton.addEventListener('click', resetGame);
+
+function resetGame() {
+    cardGrid.innerHTML = '';
+
+    firstCard = null;
+    secondCard = null;
+    lockBoard = false;
+    matchedPairs = 0;
+
+    // Dublicate items (x2 cards)
+let cardSet = [...cardImages, ...cardImages];
+
+// Sort cards in random mode
+cardSet = cardSet.sort(() => 0.5 - Math.random());
+
+
+// new cards
+cardSet.forEach(cardValue => createCard(cardValue));
+}

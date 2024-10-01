@@ -65,11 +65,32 @@ h1 {
     transform: rotateY(180deg);
 }
 
-/* Переворот карточки */
+/* card rotation */
+
 .card.flipped {
     transform: rotateY(180deg);
 }
 
 .card.matched {
     background-color: #a2f7a2;
+}
+
+
+
+
+/* button  */
+
+#reset-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #ff66b2;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#reset-button:hover {
+    background-color: #eebcd5;
 }
