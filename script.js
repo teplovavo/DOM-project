@@ -197,3 +197,46 @@ window.onbeforeunload = function() {
 
 
 /////////////////////hint button//////
+
+const allCards = document.querySelectorAll('.card');
+
+// hint function, find 2 cards
+function giveHint() {
+    const unmatchedCards = Array.from(allCards).filter(card => !card.classList.contains('matched') && !card.classList.contains('flipped'));
+    
+    if (unmatchedCards.length < 2) {
+        alert('Not enough cards to give a hint!');
+        return;
+    }
+
+    //group cards (data-card-value)
+    const cardMap = new Map();
+    
+    unmatchedCards.forEach(card => {
+        const cardValue = card.getAttribute('data-card-value');
+        if (!cardMap.has(cardValue)) {
+            cardMap.set(cardValue, []);
+        }
+        cardMap.get(cardValue).push(card); // add card
+    });
+
+    // find 2 card
+    let hintCards = [];
+    for (let [key, cardGroup] of cardMap.entries()) {
+        if (cardGroup.length >= 2) { 
+            hintCards = cardGroup.slice(0, 2); 
+            break;
+        }
+    }
+
+       // hightlight cards
+    hintCards.forEach(card => card.classList.add('flipped'));
+    
+    setTimeout(() => {
+        hintCards.forEach(card => card.classList.remove('flipped'));
+    }, 500);
+}
+
+// hint button
+const hintButton = document.getElementById('hint-button');
+hintButton.addEventListener('click', giveHint);
