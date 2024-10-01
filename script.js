@@ -22,6 +22,7 @@ let matchedPairs = 0;
 function createCard(value) {
     const card = document.createElement('div');
     card.classList.add('card');
+    card.setAttribute('data-card-value', value);
     card.innerHTML = 
        ` <div class="back">${value}</div>
         <div class="front">?</div>  `;
@@ -48,16 +49,18 @@ function flipCard(card) {
 
 // check if match
 function checkForMatch() {
-    const isMatch = firstCard.innerHTML === secondCard.innerHTML;
+    const isMatch = firstCard.getAttribute('data-card-value') === secondCard.getAttribute('data-card-value');
     isMatch ? disableCards() : unflipCards();
 }
 
 //disable cards if match
 function disableCards() {
-    firstCard.removeEventListener('click', flipCard);
-    secondCard.removeEventListener('click', flipCard);
-    resetBoard();
-    matchedPairs++;
+firstCard.classList.add('matched');
+secondCard.classList.add('matched');
+firstCard.removeEventListener('click', flipCard);
+secondCard.removeEventListener('click', flipCard);
+resetBoard();
+matchedPairs++;
 
     //if all pairs found
     if (matchedPairs === cardSet.length / 2) {
