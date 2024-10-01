@@ -64,10 +64,12 @@ matchedPairs++;
 
     //if all pairs found
     if (matchedPairs === cardSet.length / 2) {
-        setTimeout(() => alert("Cangratulations! You did it!!!"), 500);
+        setTimeout(() => {
+            alert("Congratulations!");
+            showWinModal();
+        }, 500);
     }
 }
-
 //rotate if not match
 function unflipCards() {
     lockBoard = true;
@@ -111,3 +113,33 @@ cardSet = cardSet.sort(() => 0.5 - Math.random());
 // new cards
 cardSet.forEach(cardValue => createCard(cardValue));
 }
+
+
+///////////////////////////win modal//////////////
+
+//check
+if (matchedPairs === cardSet.length / 2) {
+    setTimeout(() => {
+        alert("Congratulations!");
+        showWinModal();
+    }, 500);
+}
+const winModal = document.getElementById('win-modal');
+const closeModal = document.getElementById('close-modal');
+
+
+function showWinModal() {
+    winModal.style.display = 'block';
+}
+
+
+closeModal.addEventListener('click', () => {
+    winModal.style.display = 'none';
+});
+
+// close if click on the background
+window.addEventListener('click', (event) => {
+    if (event.target == winModal) {
+        winModal.style.display = 'none';
+    }
+});
