@@ -169,3 +169,28 @@ h1 {
     max-width: 300px;
     height: auto;
 }
+
+/* --------- Name ------- */
+.error-message {
+    color: red;
+    font-size: 0.9em;
+    display: none;
+}
+
+
+/* hint-button  */
+
+#hint-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    background-color: #64e780;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+#reset-button:hover {
+    background-color: #eebcd5;
+}

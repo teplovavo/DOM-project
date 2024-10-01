@@ -64,11 +64,9 @@ matchedPairs++;
 
     //if all pairs found
     if (matchedPairs === cardSet.length / 2) {
-        setTimeout(() => {
-            alert("Congratulations!");
-            showWinModal();
-        }, 500);
+        setTimeout(showWinModal, 500);
     }
+    
 }
 //rotate if not match
 function unflipCards() {
@@ -119,11 +117,9 @@ cardSet.forEach(cardValue => createCard(cardValue));
 
 //check
 if (matchedPairs === cardSet.length / 2) {
-    setTimeout(() => {
-        alert("Congratulations!");
-        showWinModal();
-    }, 500);
+    setTimeout(showWinModal, 500);
 }
+
 const winModal = document.getElementById('win-modal');
 const closeModal = document.getElementById('close-modal');
 
@@ -143,3 +139,61 @@ window.addEventListener('click', (event) => {
         winModal.style.display = 'none';
     }
 });
+
+
+
+///////////////////////name ////////////////
+
+const nameModal = document.getElementById('name-modal');
+const playerNameInput = document.getElementById('player-name');
+const startGameButton = document.getElementById('start-game');
+const nameError = document.getElementById('name-error');
+
+// 
+window.onload = function() {
+    nameModal.style.display = 'block';
+};
+
+// 
+startGameButton.addEventListener('click', () => {
+    const playerName = playerNameInput.value.trim();
+    if (playerName === '') {
+        nameError.textContent = 'Please, enter your name';
+        nameError.style.display = 'block';
+    } else {
+        nameError.style.display = 'none';
+        nameModal.style.display = 'none';
+        // show the name on the page
+        const greeting = document.createElement('h2');
+        greeting.textContent = `Hello, ${playerName}! Good luck!`;
+        document.body.insertBefore(greeting, document.querySelector('.game-container'));
+    }
+});
+
+
+///////////////////////timer//////////////////////////
+let timerElement = document.getElementById('timer');
+let secondsElapsed = 0;
+let timerInterval;
+
+function startTimer() {
+    timerInterval = setInterval(() => {
+        secondsElapsed++;
+        timerElement.textContent = `Time: ${secondsElapsed} sec`;
+    }, 1000);
+}
+function stopTimer() {
+    clearInterval(timerInterval);
+}
+startTimer();
+function showWinModal() {
+    stopTimer();
+    winModal.style.display = 'block';
+}
+window.onbeforeunload = function() {
+    return 'The game is not saved. Do you really want to exit?';
+};
+
+
+
+/////////////////////hint button//////
