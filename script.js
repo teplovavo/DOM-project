@@ -142,24 +142,27 @@ window.addEventListener('click', (event) => {
 
 
 
-///////////////////////name ////////////////
+///////////////////////name INPUT + Validation ////////////////
 
 const nameModal = document.getElementById('name-modal');
 const playerNameInput = document.getElementById('player-name');
 const startGameButton = document.getElementById('start-game');
 const nameError = document.getElementById('name-error');
 
-// 
+
 window.onload = function() {
     nameModal.style.display = 'block';
 };
 
-// 
+
 startGameButton.addEventListener('click', () => {
     const playerName = playerNameInput.value.trim();
     if (playerName === '') {
         nameError.textContent = 'Please, enter your name';
         nameError.style.display = 'block';
+    } else if (playerName.length < 3) {
+        nameError.textContent = 'Name must be at least 3 characters long';
+        nameError.style.display = 'block';  
     } else {
         nameError.style.display = 'none';
         nameModal.style.display = 'none';
@@ -169,7 +172,6 @@ startGameButton.addEventListener('click', () => {
         document.body.insertBefore(greeting, document.querySelector('.game-container'));
     }
 });
-
 
 ///////////////////////timer//////////////////////////
 let timerElement = document.getElementById('timer');
@@ -220,7 +222,7 @@ function giveHint() {
         cardMap.get(cardValue).push(card); // add card
     });
 
-    // find 2 card
+    
     let hintCards = [];
     for (let [key, cardGroup] of cardMap.entries()) {
         if (cardGroup.length >= 2) { 
@@ -240,3 +242,48 @@ function giveHint() {
 // hint button
 const hintButton = document.getElementById('hint-button');
 hintButton.addEventListener('click', giveHint);
+
+
+
+
+/////////////////////////////////////fragment practice//////////////////////////////////
+//highlight 
+function highlightCard(card) {
+    const fragment = document.createDocumentFragment(); 
+
+    const highlightEffect = document.createElement('div'); //create an element
+    highlightEffect.classList.add('highlight-effect');
+    
+    fragment.appendChild(highlightEffect); // add element to fragment
+    
+    card.appendChild(fragment); // add fragment to the card
+    
+
+    
+    card.addEventListener('mouseleave', () => {
+        card.removeChild(highlightEffect); // remove element
+        if (nextCard) {
+            nextCard.classList.remove('highlight');
+        }
+    });
+}
+
+
+allCards.forEach(card => {
+    card.addEventListener('mouseenter', () => highlightCard(card));
+});
+
+
+
+
+///////////////////////////////////////parentnode practice////////////
+//add to "Start new game" button
+resetButton.addEventListener('click', () => {
+    const cardGridContainer = cardGrid.parentNode; 
+
+    cardGridContainer.classList.add('highlight-border');
+
+    setTimeout(() => {
+        cardGridContainer.classList.remove('highlight-border');
+    }, 3000);
+});
